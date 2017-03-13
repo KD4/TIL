@@ -1,4 +1,4 @@
 # Today I Leaned
 
-- [Java](./Java)
-- [Spring](./Spring)
+- [Java](./Java/index.md)
+- [Spring](./Spring/index.md)
