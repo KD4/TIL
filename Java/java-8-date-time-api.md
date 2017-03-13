@@ -10,54 +10,57 @@
 
  이 더럽다고 소문난 Java의 레거시 날짜/시간을 버리고 Java 8의 새로운 날짜/시간 API를 확실하게 알기 위해서 http://www.journaldev.com/2800/java-8-date-localdate-localdatetime-instant 의 포스팅 내용을 번역해서 정리합니다.
 
-JournalDev Java 8
-Date Localdate - localdatetime - Instant
+## JournalDev Java 8 Date Localdate - localdatetime - Instant
 
 Java 8 Date Time API는 개발자들에게 환영받는 Java 8의 변경사항 중 하나입니다.
+
 그동안 Java의 날짜와 시간에 대한 API는 많은 문제가 있었다는 것을 반영하고 있죠.
 
-Java 8 이전에 Data Time API의 문제점
+### Java 8 이전에 Data Time API의 문제점
 
  새로운 Java 8 API를 배우기 이전에, 우리는 왜 새로운 API가 필요한가에 대한 질문에 답을 해보도록 하겠습니다.
 
-Java Date Time 관련 클래스들은 여러 군데 정의돼있습니다. java.util 패키지에도 있고, sql 패키지에도 있죠. 또 formatting과 parsing 관련된 클래스들은 java.text 패키지 안에 정의돼있습니다. 일관성이 없어요...
+1. Java Date Time 관련 클래스들은 여러 군데 정의돼있습니다. java.util 패키지에도 있고, sql 패키지에도 있죠. 또 formatting과 parsing 관련된 클래스들은 java.text 패키지 안에 정의돼있습니다. 일관성이 없어요...
 
-java.util.Date 안에는 date와 time이 있습니다. 반면에 java.sql.Date 안에는 date에 대한 정보만 있어요. 그럼에도 불구하고 두 패키지안에 클래스 이름은 같습니다. 더러운 디자인이죠.
+2. java.util.Date 안에는 date와 time이 있습니다. 반면에 java.sql.Date 안에는 date에 대한 정보만 있어요. 그럼에도 불구하고 두 패키지안에 클래스 이름은 같습니다. 더러운 디자인이죠.
 
-그리고 이 클래스들은 time, timestamp, parsing에 대해서 깊은 고민을 하지 않고 정의되었습니다. 그래서 우리는 java.text.DateFormat 추상 클래스를 사용해야 했습니다. 보통 SimpleDateFormat 클래스를 포맷, 파씽 용도로 사용했습니다.
+3. 그리고 이 클래스들은 time, timestamp, parsing에 대해서 깊은 고민을 하지 않고 정의되었습니다. 그래서 우리는 java.text.DateFormat 추상 클래스를 사용해야 했습니다. 보통 SimpleDateFormat 클래스를 포맷, 파씽 용도로 사용했습니다.
 
-모든 Date 클래스는 mutable 했습니다. 때문에 thread safe하지 않았어요, 이 이슈는 Java ~7 의 Date, Calendar 클래스들의 가장 큰 문제입니다.
+4. 모든 Date 클래스는 mutable 했습니다. 때문에 thread safe하지 않았어요, 이 이슈는 Java ~7 의 Date, Calendar 클래스들의 가장 큰 문제입니다.
 
-Date 클래스는 국제규격을 지원하지 않습니다. timezone을 지원하지 않는다는 의미죠. 때문에 java.util.calender나 TimeZone 클래스들이 소개됐지만, 이 클래스들도 위와 같은 문제들을 가지고 있었습니다.
+5. Date 클래스는 국제규격을 지원하지 않습니다. timezone을 지원하지 않는다는 의미죠. 때문에 java.util.calender나 TimeZone 클래스들이 소개됐지만, 이 클래스들도 위와 같은 문제들을 가지고 있었습니다.
 
 
- 위에 리스팅 된 문제들 말고도, Date Time API에 설계 관련한 문제가 많았습니다. 때문에 대부분에 프로젝트에서 Joda Time과 같은 Third Party Library를 사용해야 했습니다.
+위에 리스팅 된 문제들 말고도, Date Time API에 설계 관련한 문제가 많았습니다. 때문에 대부분에 프로젝트에서 Joda Time과 같은 Third Party Library를 사용해야 했습니다.
+
 설계에 대한 문제도 한번 살펴봐야 할 문제들입니다. 이 문제들은 네이버 D2 블로그 포스팅을 통해서 확인해주세요!
+
 http://d2.naver.com/helloworld/645609 [Java의 날짜와 시간 API:d2 블로그]
 
-Java 8 Date과 JSR-310 규약
-Java 8 Date API는 JSR-310 규약을 준수하였습니다. 이 규약은 기존에 date time 구현체들에 문제들을 극복하고자 디자인되었습니다. 다음은 JSR-310 디자인 규칙 중 일부입니다.
+### Java 8 Date과 JSR-310 규약
+- Java 8 Date API는 JSR-310 규약을 준수하였습니다. 이 규약은 기존에 date time 구현체들에 문제들을 극복하고자 디자인되었습니다. 다음은 JSR-310 디자인 규칙 중 일부입니다.
 
-immutability : 새로운 Date Time API 클래스들은 모두 immutable 해야 합니다.
+1. immutability : 새로운 Date Time API 클래스들은 모두 immutable 해야 합니다.
 
-Separation Of Concerns : 새로운 API는 human readable date time과 marchine time ( unix timestamp )의 구현이 명확히 나뉘어 있어야 합니다. Date, Time, DateTime, Timestamp, Timezone이 따로 정의되어 있어야 된다는 것을 뜻합니다.
+2. Separation Of Concerns : 새로운 API는 human readable date time과 marchine time ( unix timestamp )의 구현이 명확히 나뉘어 있어야 합니다. Date, Time, DateTime, Timestamp, Timezone이 따로 정의되어 있어야 된다는 것을 뜻합니다.
 
-Clarity : 메서드는 모든 클래스에서 같은 action을 보장하도록 정의돼야 합니다. 예를 들어서, 현재 시간에 대한 인스턴스를 얻기 위한 메서드인 now()가 정의된 클래스에는 format()과 parse() 메서드가 같이 정의되어 있어야 합니다.
+3. Clarity : 메서드는 모든 클래스에서 같은 action을 보장하도록 정의돼야 합니다. 예를 들어서, 현재 시간에 대한 인스턴스를 얻기 위한 메서드인 now()가 정의된 클래스에는 format()과 parse() 메서드가 같이 정의되어 있어야 합니다.
 
-Utility Operations : 모든 클래스는 plus, minus, format, parsing, getting과 같이 일반적인 작업을 하는 메서드들을 포함하고 있어합니다.
+4. Utility Operations : 모든 클래스는 plus, minus, format, parsing, getting과 같이 일반적인 작업을 하는 메서드들을 포함하고 있어합니다.
 
-Extendable : ISO-8601 규약뿐만 아니라 다른 ISO 포맷에서도 작동해야 합니다.
+5. Extendable : ISO-8601 규약뿐만 아니라 다른 ISO 포맷에서도 작동해야 합니다.
 
-Java 8 Date Time API 패키지
+### Java 8 Date Time API 패키지
 
-java.time Package : 이 패키지는 새로운 Java Date Time의 핵심이 되는 패키지입니다. LocalDate, LocalTime, LocalDateTime, Instant, Period, Duration과 같은 주요한 기본 패키지들이 모두 이 패키지 안에 정의돼있습니다.
-java.time.chrono Package : 이 패키지에는 ISO calender 이 아닌 시스템을 지원하기 위한 패키지입니다.
-java.time.format Package : 이 패키지는 date와 time을 포매팅하고 파씽하기 위한 클래스들이 정의돼있습니다. 대부분의 경우 java.time 패키지가 제공하는 메서드들로 formatting과 parsing이 가능하기 때문에 잘 사용되지 않습니다.
-java.time.temporal Package : 특정 달의 마지막 날짜를 찾고 싶을 때, withXXX라는 메서드를 통해서 확인할 수 있습니다. 이렇듯 특정한 날짜 정보를 얻기 위한 메서드들이 정의된 패키지가 temporal 패키지입니다.
-java.time.zone Package : 이 패키지에는 다른 timezone을 지원하기 위한 클래스들이 포함되어 있습니다.
+- java.time Package : 이 패키지는 새로운 Java Date Time의 핵심이 되는 패키지입니다. LocalDate, LocalTime, LocalDateTime, Instant, Period, Duration과 같은 주요한 기본 패키지들이 모두 이 패키지 안에 정의돼있습니다.
+- java.time.chrono Package : 이 패키지에는 ISO calender 이 아닌 시스템을 지원하기 위한 패키지입니다.
+- java.time.format Package : 이 패키지는 date와 time을 포매팅하고 파씽하기 위한 클래스들이 정의돼있습니다. 대부분의 경우 java.time 패키지가 제공하는 메서드들로 formatting과 parsing이 가능하기 때문에 잘 사용되지 않습니다.
+- java.time.temporal Package : 특정 달의 마지막 날짜를 찾고 싶을 때, withXXX라는 메서드를 통해서 확인할 수 있습니다. 이렇듯 특정한 날짜 정보를 얻기 위한 메서드들이 정의된 패키지가 temporal 패키지입니다.
+- java.time.zone Package : 이 패키지에는 다른 timezone을 지원하기 위한 클래스들이 포함되어 있습니다.
 
-Java 8 Date Time API examples
+### Java 8 Date Time API examples
  지금까지 JAVA Date Time API에 중요한 부분들을 살펴보았습니다.
+
  이제 이 클래스들을 예제 코드들과 함께 살펴보겠습니다.
 
 1. LocalDate
@@ -102,12 +105,15 @@ Current Date in KST=2017-03-04
 
 
 2. LocalTime
- LocalTime은 사람이 읽을 수 있는 포맷으로 시간을 표현해주는 Immutable 클래스입니다. (기본 포맷은 hh:mm:ss.zzz)
- LocalDate처럼, 이 클래스도 여러 타임존에 대한 인스턴스를 생성할 수 있고, 시간, 분, 초를 아규먼트로 넣어서 특정 시간에 대한 인스턴스를 생성할 수 있습니다.
+LocalTime은 사람이 읽을 수 있는 포맷으로 시간을 표현해주는 Immutable 클래스입니다. (기본 포맷은 hh:mm:ss.zzz)
+
+LocalDate처럼, 이 클래스도 여러 타임존에 대한 인스턴스를 생성할 수 있고, 시간, 분, 초를 아규먼트로 넣어서 특정 시간에 대한 인스턴스를 생성할 수 있습니다.
+
+```java
 import java.time.LocalTime;
 import java.time.ZoneId;
 
-```java
+
 public class LocalTimeExample {
     public static void main(String[] args) {
 
@@ -133,6 +139,7 @@ Current Time in KST=19:13:07.849
 
 3. LocalDateTime
  LocalDateTime은 immutable 한 날짜-시간 정보를 표현하기 위한 date-time 객체입니다. ( 기본 포맷은 yyyy-MM-dd-HH-mm-ss.zzz )
+ 
 이 클래스는 LocalDate와 LocalTime 객체의 아규먼트를 전달해주는 팩토리 메서드를 제공합니다. 이 클래스의 인스턴스를 생성하는 예제 코드를 봐보시죠!
 
 ```java
@@ -185,6 +192,7 @@ Current Date in UTC=2017-03-04T19:22:35.657
 
 4. Instant
 Instant 클래스는 컴퓨터가 읽을 수 있는 time format을 다루기 위해서 사용됩니다. 이 클래스는 시간 정보를 유닉스 timestamp 값으로 저장하고 있습니다.
+
 ```java
 import java.time.*;
 
