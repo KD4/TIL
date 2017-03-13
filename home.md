@@ -1,5 +1,5 @@
 # Today I Leaned
 
-- [Java](./Java/index.md)
-- [Spring](./Spring/index.md)
-- [Shell](./Shell/index.md)
+- [Java](./Java/README.md)
+- [Spring](./Spring/README.md)
+- [Shell](./Shell/README.md)
