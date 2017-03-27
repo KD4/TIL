@@ -65,3 +65,10 @@ function callback( data ) {
 ```
 
 위의 소스처럼 callback 이라는 함수를 만들면, seotest.com/result.json 는 선언된 callback 함수를 호출하게 될것이다. 다른 도메인이라고 할지라도 문제 없이 json 데이터를 사용하게 되는 것이다. 사실 jsonp는 이것이 다다.
+
+
+## JSONP 단점
+
+- 표준 기능이 아니다.
+- 검증되지 않은 자바스크립트 코드가 삽입된다.
+- GET 방식만 지원한다.
