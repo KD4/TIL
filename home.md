@@ -7,3 +7,4 @@
 - [Encoding](./Encoding/README.md)
 - [Github](./Github/README.md)
 - [WebTech](./WebTech/README.md)
+- [Javascript](./Javascript/README.md)
