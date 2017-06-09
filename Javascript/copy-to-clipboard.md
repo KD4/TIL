@@ -10,31 +10,33 @@ IE의 경우 window개체를 통해 window.clipboardData로 접근이 가능하�
 
 ```Javascript
 function copyToClipboard(targetText) {
-  var result;
-  var textareaForCopy = document.createElement('textarea');
-  textareaForCopy.value = targetText;
-  textareaForCopy.style.position = HIDE_ELEMENT_STYLE.position;
-  textareaForCopy.style.left = HIDE_ELEMENT_STYLE.left;
-  document.body.appendChild(textareaForCopy);
-  textareaForCopy.select();
+
+ var result;
+ try {
+     if (window.clipboardData) {
+         // for IE
+         result = window.clipboardData.setData('Text', targetText);
+     } else {
+         // for Chrome, Firefox
+         var textareaForCopy = document.createElement('textarea');
+         textareaForCopy.value = targetText;
+         textareaForCopy.style.position = HIDE_ELEMENT_STYLE.position;
+         textareaForCopy.style.left = HIDE_ELEMENT_STYLE.left;
+         document.body.appendChild(textareaForCopy);
+         textareaForCopy.select();
+         result = document.execCommand('copy');
+         document.body.removeChild(textareaForCopy);
+     }
+ } catch (e) {
+     // for Opera, Safari
+     result = false;
+ }
 
 
-  try {
-      if (window.clipboardData) {
-          result = window.clipboardData.setData('Text', targetText);
-      } else {
-          result = document.execCommand('copy');
-      }
-  } catch (e) {
-      result = false;
-  }
-
-  document.body.removeChild(textareaForCopy);
-
-  if (result) {
-      alert('해당 댓글 주소를 복사했습니다. Ctl + V를 눌러서 확인해주세요.');
-  } else {
-      prompt('클립보드 복사를 지원하지 않는 브라우져입니다. 주소를 직접 복사해주세요.', targetText);
-  }
+ if (result) {
+     alert('텍스트를 복사했습니다. Ctrl + V 를 눌러서 확인해주세요.');
+ } else {
+     prompt('아래 텍스트를 직접 복사해주세요.', targetText);
+ }
 }
 ```
