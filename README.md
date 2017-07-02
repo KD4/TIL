@@ -6,7 +6,18 @@
 
   이 저장소에 있는 문서들은 마크다운 문법으로 작성되며 배운 것들에 대한 컨셉, 짧은 설명 그리고 예제코드로 이루어질 것입니다.
 
-  목록을 보기위해서는 [Link](./home.md)로 이동해주세요.
+### MarkDown View
+- [Java](./Java/README.md)
+- [Spring](./Spring/README.md)
+- [Linux](./Linux/README.md)
+- [Tomcat](./Tomcat/README.md)
+- [Encoding](./Encoding/README.md)
+- [Github](./Github/README.md)
+- [WebTech](./WebTech/README.md)
+- [Javascript](./Javascript/README.md)
+- [Mongo](./Mongo/README.md)
+- [Vue](./Vue/README.md)
+
 
 ### Requirements
 ```
