@@ -5,6 +5,7 @@ Vue로 만든 어플리케이션의 상태관리패턴 & 라이브러리
 - [Getter](./vuex-getter.md)
 - [Mutations](./vuex-mutations.md)
 - [Action](./vuex-action.md)
+- [Module](./vuex-module.md)
 
 ## 상태관리패턴은 왜 필요할까 ?
 하나의 뷰 인스턴스는 다음과 같이 상태, 뷰, 액션 구조를 가집니다.
