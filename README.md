@@ -20,7 +20,7 @@
 - [Vue](./Vue/README.md)
 - [Vuex](./Vuex/README.md)
 - [React](./React/README.md)
-- [Kotlin](./Kotln/README.md)
+- [Kotlin](./Kotlin/README.md)
 
 
 ### Requirements
