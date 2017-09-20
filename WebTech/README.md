@@ -6,3 +6,4 @@
 - [HTTPS(ssl)](./https.md);
 - [credentials property of Request](./request-credentials.md)
 - [JWT](./jwt.md)
+- [WRR](./wrr.md)
