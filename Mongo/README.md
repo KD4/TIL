@@ -1,3 +1,4 @@
 # Mongo
 
-- [Read Preference](./read_preference.md)
+- [Read Preference](./read-preference.md)
+- [Explain 결과](./explain-results.md)
