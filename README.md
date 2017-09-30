@@ -21,6 +21,7 @@
 - [Vuex](./Vuex/README.md)
 - [React](./React/README.md)
 - [Kotlin](./Kotlin/README.md)
+- [DesignPattern](./DesignPattern/README.md)
 
 
 ### Requirements
