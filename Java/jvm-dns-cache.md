@@ -1,6 +1,6 @@
 # JVM의 DNS 캐시
 
-JVM은 일단 실행되면 그 이후부터의 도메인 네임을 통한 네트워크 접속시 DNS 정보를 캐싱한다. 이 정보는 설정된 TTL(Time-To-Leave) 시간 동안 유효하다.
+JVM은 일단 실행되면 그 이후부터의 도메인 네임을 통한 네트워크 접속시 DNS 정보를 캐싱한다. 이 정보는 설정된 TTL(Time-To-Live) 시간 동안 유효하다.
 
 -1 : cache forever (default)
 
