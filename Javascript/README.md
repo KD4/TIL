@@ -8,3 +8,4 @@
 - [ECMA2015-ES6](./es6.md)
 - [Gulp](./gulp.md)
 - [Webpack](./webpack.md)
+- [Babel](./babel.md)
