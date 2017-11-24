@@ -6,4 +6,4 @@ https://www.welcomekakao.com/competitions/35/welcome-kakao
 
 1차 문제 목록 : http://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/
 
-- [1차-비밀지도](./secret-map.py)
+- [1차 - 비밀지도](./secret-map.js)
