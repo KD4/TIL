@@ -15,6 +15,7 @@ Facebook이 찾은 근본적인 문제점은 데이터가 애플리케이션을 
 아래는 Flux의 데이터 흐름이다.
 
 [ACTION] => [DISPATCHER] => [STORE] => [VIEW]
+
 [ACTION]<============================= [VIEW]
 
 ACTION, DISPATCHER, STORE, VIEW라는 생소한 개념들이 있다.
