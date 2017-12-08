@@ -1,6 +1,6 @@
 # Redux
 
-- [compose](./compose.md);
+- [compose](./compose.md)
 - [미들웨어](./middleware.md)
 
 ## 소개
