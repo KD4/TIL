@@ -2,6 +2,7 @@
 
 - [compose](./compose.md)
 - [미들웨어](./middleware.md)
+- [createStore](./create-store.md)
 
 ## 소개
 React를 이용하면 사용자 액션에 따라 DOM을 직접 다루던 과거 개발 방식(JQuery)과는 다르게 데이터 상태에 따라 자동으로 UI, 즉 DOM을 관리할 수 있다.
