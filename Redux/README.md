@@ -1,6 +1,7 @@
 # Redux
 
 - [compose](./compose.md)
+- [FSA](./flux-standard-action.md)
 - [미들웨어](./middleware.md)
 - [createStore](./create-store.md)
 
