@@ -23,6 +23,7 @@
 - [Vuex](./Vuex/README.md)
 - [React](./React/README.md)
 - [Redux](./Redux/README.md)
+- [Redis](./Redis/README.md)
 - [Kotlin](./Kotlin/README.md)
 - [DesignPattern](./DesignPattern/README.md)
 - [Programming Language](./ProgrammingLanguage/README.md)
