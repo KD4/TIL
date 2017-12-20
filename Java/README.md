@@ -6,3 +6,4 @@
 - [Functional interface](./functional-interface.md)
 - [JVM Heap Dump - Out of memory Exception](./heap-dump.md)
 - [Callable/Future, Executor](./callable-future-executor.md)
+- [Optional](./optional.md)
