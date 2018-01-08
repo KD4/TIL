@@ -19,6 +19,7 @@
 - [NodeJs](,/Node/README.md)
 - [CSS](./CSS/README.md)
 - [Mongo](./Mongo/README.md)
+- [MySQL](./MySQL/README.md)
 - [Vue](./Vue/README.md)
 - [Vuex](./Vuex/README.md)
 - [RabbitMQ](./RabbitMQ/README.md)
