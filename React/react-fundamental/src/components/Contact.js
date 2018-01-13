@@ -1,6 +1,8 @@
 import React from 'react';
 import ContactInfo from './ContactInfo';
 import ContactDetails from './ContactDetails';
+import ContactCreate from './ContactCreate';
+import update from 'react-addons-update';
 
 export default class Contact extends React.Component {
 
@@ -26,6 +28,16 @@ export default class Contact extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this); // 메소드 바인딩
         this.handleClick = this.handleClick.bind(this);
+
+        this.handleCreate = this.handleCreate.bind(this);
+    }
+
+    handleCreate(contact) {
+        this.setState({
+            contactData: update(this.state.contactData, {
+                $push: [contact],
+            })
+        });
     }
 
 
@@ -36,7 +48,6 @@ export default class Contact extends React.Component {
     }
 
     handleClick(key) {
-        console.log(key);
         this.setState({selectedKey: key});
     }
 
@@ -58,6 +69,7 @@ export default class Contact extends React.Component {
                 <input name="keyword" value={this.state.keyword} placeholder="Search" onChange={this.handleChange}/>
                 <div>{mapToComponents(this.state.contactData)}</div>
                 <ContactDetails isSelected={(this.state.selectedKey != -1)} contact={this.state.contactData[this.state.selectedKey]}></ContactDetails>
+                <ContactCreate onCreate={this.handleCreate} />
             </div>
         );
     }

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "react": "^16.2.0",
+    "react-addons-update": "^15.6.2",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
