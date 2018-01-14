@@ -30,6 +30,31 @@ export default class Contact extends React.Component {
         this.handleClick = this.handleClick.bind(this);
 
         this.handleCreate = this.handleCreate.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+    }
+
+    handleRemove() {
+        if (this.state.selectedKey < 0) return 0;
+
+        this.setState({
+            contactData: update(this.state.contactData, {
+                $splice: [[this.state.selectedKey, 1]]
+            }),
+            selectedKey: -1
+        })
+    }
+
+    handleEdit(editedName, editedPhone) {
+        this.setState({
+            contactData: update(this.state.contactData, {
+                [this.state.selectedKey] : {
+                    name: { $set : editedName },
+                    phone: { $set : editedPhone }
+                }
+            })
+        })
+        
     }
 
     handleCreate(contact) {
@@ -68,9 +93,15 @@ export default class Contact extends React.Component {
                 <h1>Contacts</h1>
                 <input name="keyword" value={this.state.keyword} placeholder="Search" onChange={this.handleChange}/>
                 <div>{mapToComponents(this.state.contactData)}</div>
-                <ContactDetails isSelected={(this.state.selectedKey != -1)} contact={this.state.contactData[this.state.selectedKey]}></ContactDetails>
+                <ContactDetails 
+                    isSelected={(this.state.selectedKey != -1)} 
+                    contact={this.state.contactData[this.state.selectedKey]}
+                    onRemove={this.handleRemove}
+                    onEdit={this.handleEdit}
+                ></ContactDetails>
                 <ContactCreate onCreate={this.handleCreate} />
             </div>
         );
     }
 }
+
