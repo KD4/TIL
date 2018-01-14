@@ -6,6 +6,7 @@
 - [상태관리패턴 - Flux](./flux.md)
 - [JSX](./jsx.md)
 - [Props And State](./props-state.md)
+- [Life Cycle API](./life-cycle-api.md)
 
 ```
 Ref
