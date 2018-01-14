@@ -14,6 +14,7 @@ export default class ContactDetails extends React.Component {
         this.toggleEdit = this.toggleEdit.bind(this);
         this.onEdit = this.onEdit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
 
     }
 
@@ -22,6 +23,10 @@ export default class ContactDetails extends React.Component {
             name: nextProps.contact.name,
             phone: nextProps.contact.phone
         });
+    }
+
+    handleKeyPress(e) {
+        if (e.charCode === 13) this.onEdit(e);
     }
 
     toggleEdit() {
@@ -53,6 +58,7 @@ export default class ContactDetails extends React.Component {
                         name="name" 
                         value={this.state.name} 
                         onChange={this.handleChange}
+                        onKeyPress={this.handleKeyPress}
                     />
                 </p>
                 <p>
@@ -61,6 +67,7 @@ export default class ContactDetails extends React.Component {
                         name="phone" 
                         value={this.state.phone} 
                         onChange={this.handleChange}
+                        onKeyPress={this.handleKeyPress}
                     />
                 </p>
             </div>) :
