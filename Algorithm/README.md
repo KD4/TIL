@@ -6,3 +6,4 @@
 - [핸드폰번호가리기](./hide-phone.md)
 - [미로찾기](./maze.js)
 - [n퀸문제](./n-queens.js)
+- [삽입정렬](./insertion-sort.js)
