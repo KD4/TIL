@@ -23,7 +23,7 @@
 - [MySQL](./MySQL/README.md)
 - [Vue](./Vue/README.md)
 - [Vuex](./Vuex/README.md)
-- [RabbitMQ](./RabbitMQ/README.md)
+- [MessageQueue](./MQ/README.md)
 - [React](./React/README.md)
 - [Redux](./Redux/README.md)
 - [Redis](./Redis/README.md)
