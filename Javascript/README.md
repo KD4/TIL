@@ -11,3 +11,4 @@
 - [Babel](./babel.md)
 - [Array](./array.md)
 - [Date](./date.md)
+- [Async forEach](./async-foreach.md)
