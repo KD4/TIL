@@ -12,3 +12,4 @@
 - [Array](./array.md)
 - [Date](./date.md)
 - [Async forEach](./async-foreach.md)
+- [doT JS](./dot-template.md)
