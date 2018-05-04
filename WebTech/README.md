@@ -12,3 +12,4 @@
 - [접근성-초점이동](./accessibility_focus.md)
 - [Focusable](./focusable.md)
 - [XMLHttpRequest](./XMLHttpRequest.md)
+- [브라우저 버전 체크](./check_browser_version.md)
