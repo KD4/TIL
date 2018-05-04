@@ -2,6 +2,7 @@
 
 
 - [Lazy 어노테이션](./lazy_annotation.md)
+- [Depends On 어노테이션](./depends_on.md)
 
 
 ### 1부. 이해
