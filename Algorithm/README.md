@@ -7,3 +7,4 @@
 - [미로찾기](./maze.js)
 - [n퀸문제](./n-queens.js)
 - [삽입정렬](./insertion-sort.js)
+- [그래프-부모정점](./mother-vertex.md)
