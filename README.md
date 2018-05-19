@@ -36,4 +36,3 @@
 - [Vue](./Vue/README.md)
 - [Vuex](./Vuex/README.md)
 - [WebTech](./WebTech/README.md)
-- [Kakao Coding Test](./KakaoCodingTest/README.md)
