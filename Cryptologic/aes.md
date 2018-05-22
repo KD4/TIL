@@ -4,7 +4,7 @@ AES(Advanced Encryption Standard)
 ## 개요
 AES는 1990년대 말 NIST에서 DES를 대체할 목적으로 개최한 AES 선발대회에서 우승한 레인달 알고리즘이다.
 
-알고리즘 개요[5][편집]
+알고리즘 개요
 
 AES 암호화 라운드
 AES는 각 라운드에서 대체(substitution)와 치환(permutation)을 이용해서 데이터 블록 전체를 병렬 처리한다.
