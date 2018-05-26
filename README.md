@@ -14,6 +14,7 @@
 - [DDD](./DDD/README.md)
 - [DesignPattern](./DesignPattern/README.md)
 - [Docker](./Docker/README.md)
+- [Etc](./Etc/README.md)
 - [Encoding](./Encoding/README.md)
 - [Github](./Github/README.md)
 - [Java](./Java/README.md)
