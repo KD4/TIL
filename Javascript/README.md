@@ -14,3 +14,4 @@
 - [Async forEach](./async-foreach.md)
 - [doT JS](./dot-template.md)
 - [모듈](./moduels.md)
+- [AMD](./amd.md)
