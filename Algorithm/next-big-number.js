@@ -13,43 +13,48 @@
 function solution(n) {
     if (n == 0) return 0;
 
-    let binN = [... n.toString(2)];
+    let binaryStr = [... n.toString(2)];
 
     let flag = false;
     let endIndex = -1;
-    let startIndex = -1;
 
-    for (var i = binN.length-1; i >= 0; i = i-1) {
-        if (binN[i] == 1) {
+    // 2진 배열 뒤에서 부터 순회, 낮은 자리 숫자부터 1 군락이 나오는 인덱스를 찾는다.
+    for (var i = binaryStr.length-1; i >= 0; i = i-1) {
+        if (binaryStr[i] == 1) {
             flag = true;
         }
 
-        if (binN[i] == 0 && flag) {
+        if (binaryStr[i] == 0 && flag) {
             endIndex = i+1;
             break;
         }
     }
 
+    // endIndex가 -1이면 가장 큰 자리수가 1임. 
     if (endIndex == -1) {
         endIndex = 0;
     }
 
-    let tailArray = binN.slice(endIndex+1, binN.length).reverse();
+    // 올림 대상 인덱스 뒷부분은 reverse 시킨다.
+    let tailArray = binaryStr.slice(endIndex+1, binaryStr.length).reverse();
 
     let headArray = [];
+
+    // 0일 때는 새로운 자릿수가 생기므로 분기를 태운다.
     if (endIndex == 0) {
-        binN[endIndex] = 0;
-        binN.unshift(1);        
-        headArray = binN.slice(0, 2);
+        binaryStr[endIndex] = 0;
+        binaryStr.unshift(1);        
+        headArray = binaryStr.slice(0, 2);
     } else {
-        binN[endIndex] = 0;
-        binN[endIndex-1] = 1;        
-        headArray = binN.slice(0, endIndex + 1);
+        binaryStr[endIndex] = 0;
+        binaryStr[endIndex-1] = 1;        
+        headArray = binaryStr.slice(0, endIndex + 1);
     }
 
-    let finalArray = [...headArray, ...tailArray];
+    // 두 배열을 합친다.
+    let finalBinary = [...headArray, ...tailArray];
 
-    return parseInt(finalArray.join(''), 2);
+    return parseInt(finalBinary.join(''), 2);
 }
 
 
