@@ -10,6 +10,7 @@
 - [Algorithm](./Algorithm/README.md)
 - [Apache](./Apache/README.md)
 - [CommandLine](./CommandLine/README.md)
+- [Conference](./Conference/README.md)
 - [Cryptologic](./Cryptologic/README.md)
 - [CSS](./CSS/README.md)
 - [DDD](./DDD/README.md)
