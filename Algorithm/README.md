@@ -14,3 +14,4 @@
 - [유효 괄호 검증](./vaild-parentheses.js)
 - [다음 큰 숫자 찾기](./next-big-number.js)
 - [땅따먹기](./hopscotch.js)
+- [숫자의 표현](./number-expression.js)
