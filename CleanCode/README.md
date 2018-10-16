@@ -16,3 +16,4 @@ CleanCode
 - [4장-주석](./chapter-4.md)
 - [5장-형식 맞추기](./chapter-5.md)
 - [6장-객체와 자료구조](./chapter-6.md)
+- [7장-오류 처리](./chapter-7.md)
