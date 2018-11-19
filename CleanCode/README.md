@@ -23,3 +23,4 @@ CleanCode
 - [11장-시스템](./chapter-11.md)
 - [12장-창발성](./chapter-12.md)
 - [13장-동시성](./chapter-13.md)
+- [14장-점진적인 개선-1차](./chapter-14-1.md)
