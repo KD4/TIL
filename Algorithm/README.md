@@ -15,3 +15,4 @@
 - [다음 큰 숫자 찾기](./next-big-number.js)
 - [땅따먹기](./hopscotch.js)
 - [숫자의 표현](./number-expression.js)
+- [이진트리 중위순회](./binary-tree-inorder-traversal.js)
