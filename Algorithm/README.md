@@ -17,3 +17,4 @@
 - [숫자의 표현](./number-expression.js)
 - [이진트리 중위순회](./binary-tree-inorder-traversal.js)
 - [N트리 최대 깊이 구하기](./maximum-depth-of-n-ary-tree.java)
+- [유일한 수](./single-number.py)
