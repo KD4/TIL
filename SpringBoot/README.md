@@ -28,3 +28,5 @@ Spring 만으로 아주 간단한 Hello World 웹 어플리케이션을 개발�
 - [Spring 부트 핵심](./key-point.md)
 - [프로퍼티 우선순위](./properties-priority.md)
 - [부트 테스트를 위한 어노테이션](./annotations-for-test.md)
+- [액츄에이터](./actuator.md)
+
