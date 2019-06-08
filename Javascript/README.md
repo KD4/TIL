@@ -19,3 +19,4 @@
 - [Lodash](./lodash.md)
 - [Promise](./promise.md)
 - [hasOwnProperty](./hasOwnProperty.md)
+- [상속과 프로토타입 체이닝](./inheritance-and-the-prototype-chain.md)
