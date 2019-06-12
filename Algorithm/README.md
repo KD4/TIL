@@ -24,3 +24,4 @@
 - [링크드리스트 중간 노드 찾기](./middleOfTheLinkedList.java)
 - [N트리 전위 순회](./nAryTreePreorderTraversal.java)
 - [문자열 수열](./latterCasePermutation.java)
+- [이진트리에서 노드간 최소차 찾기](./minimum-absolute-diff.py)
