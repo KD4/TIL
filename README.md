@@ -22,6 +22,7 @@
 - [Etc](./Etc/README.md)
 - [FluentD](./FluentD/README.md)
 - [Github](./Github/README.md)
+- [HTML](./Html/README.md)
 - [IMDG](./IMDG/README.md)
 - [Java](./Java/README.md)
 - [Javascript](./Javascript/README.md)
