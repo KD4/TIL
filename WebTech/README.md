@@ -14,3 +14,4 @@
 - [XMLHttpRequest](./XMLHttpRequest.md)
 - [브라우저 버전 체크](./check_browser_version.md)
 - [SSL offloading](./ssl-offloading.md)
+- [UA로 모바일 체크](./detect_mobile_device.md)
