@@ -26,6 +26,7 @@
 - [IMDG](./IMDG/README.md)
 - [Java](./Java/README.md)
 - [Javascript](./Javascript/README.md)
+- [Kafka](./Kafka/README.md)
 - [Kotlin](./Kotlin/README.md)
 - [Linux](./Linux/README.md)
 - [Maven](./Maven/README.md)
