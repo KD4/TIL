@@ -21,6 +21,7 @@
 - [Encoding](./Encoding/README.md)
 - [Etc](./Etc/README.md)
 - [FluentD](./FluentD/README.md)
+- [Flutter](./Flutter/README.md)
 - [Github](./Github/README.md)
 - [HTML](./Html/README.md)
 - [IMDG](./IMDG/README.md)
