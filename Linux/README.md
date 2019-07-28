@@ -7,3 +7,4 @@
 - [15가지 간단 명령어](./little_known.md)
 - [bash 기초](./basics.md)
 - [head 명령어](./command_head.md)
+- [tail 명령어](./command_tail.md)
