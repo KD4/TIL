@@ -19,5 +19,5 @@ NUM: bytes 명령줄에는 K,M,G등 문자열도 입력가능, lines에 +를 입
 ```bash
 $ tail /etc/passwd
 $ tail -n 1 /etc/passwd
-$ cat /etc/passwd || tail -n +5
+$ cat /etc/passwd | tail -n +5
 ```

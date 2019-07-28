@@ -15,5 +15,5 @@ NUM: bytes 명령줄에는 K,M,G등 문자열도 입력가능, lines에 -를 입
 ```bash
 $ head /etc/passwd
 $ haed -n 1 /etc/passwd
-$ cat /etc/passwd || head -n -5
+$ cat /etc/passwd | head -n -5
 ```
