@@ -11,7 +11,6 @@
 - [Apache](./Apache/README.md)
 - [Backpack](./Backpack/README.md)
 - [CleanCode](./CleanCode/README.md)
-- [CommandLine](./CommandLine/README.md)
 - [Conference](./Conference/README.md)
 - [Cryptologic](./Cryptologic/README.md)
 - [CSS](./CSS/README.md)
@@ -50,4 +49,5 @@
 - [Vim](./Vim/README.md)
 - [Vue](./Vue/README.md)
 - [Vuex](./Vuex/README.md)
+- [WebSocket](./WebSocket/README.md)
 - [WebTech](./WebTech/README.md)
