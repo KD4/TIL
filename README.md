@@ -34,6 +34,7 @@
 - [MessageQueue](./MQ/README.md)
 - [MSA](./MSA/README.md)
 - [MySQL](./MySQL/README.md)
+- [Netty](./Netty/README.md)
 - [NodeJs](./Node/README.md)
 - [Nuxt](./Nuxt/README.md)
 - [Programming Language](./ProgrammingLanguage/README.md)
