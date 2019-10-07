@@ -15,4 +15,4 @@ HTTP는 헤더를 통해서 해당 프레임워크를 정의하였다.
 
 여기서 보이는 <Type>은 인증 스킴이다. 
 
-인증 스킴은 크게 Basic, Bearer, Digest, HOBA 등이 있다. 
+인증 스킴은 크게 [Basic](./basic_authentication.md), Bearer, Digest, HOBA 등이 있다. 
