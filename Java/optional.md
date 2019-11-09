@@ -29,7 +29,7 @@ Optional을 사용하면 다루는 객체가 Nullable 인가를 알 수 있다. 
 #### `get()`
 `Optional`에 값이 있는 경우, 반환한다. `null`이라면 `NoSuchElementException`을 던진다.
 
-#### `ifPresent()`
+#### `isPresent()`
 값이 존재하면 `true`를 반환한다.
 
 #### `ifPresent(Consumer<? super T> consumer)`
