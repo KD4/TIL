@@ -8,5 +8,6 @@
 - [Callable/Future, Executor](./callable-future-executor.md)
 - [Optional](./optional.md)
 - [제네릭스](./generics.md)
-- [인프런 더 자바-java, jvm,jdk, jre 이해](./java-jvm-jdk-jre.md)
-- [인프런 더 자바-JVM 구조](./jvm-structure.md)
+- [인프런 더 자바 - java, jvm,jdk, jre 이해](./java-jvm-jdk-jre.md)
+- [인프런 더 자바 - JVM 구조](./jvm-structure.md)
+- [인프런 더 자바 - 클래스로더](./class-loader.md)
