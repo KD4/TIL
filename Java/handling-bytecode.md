@@ -176,6 +176,7 @@ pom.xml
 jvm option: -javaagent:/Users/keesun/workspace/MasulsaJavaAgent/target/MasulsaAgent-1.0-SNAPSHOT.jar
 
 ## 바이트코드 조작 정리
+바이트 코드 조작을 통해 어떤것들을 할 수 있을까?
 
 ### 프로그램 분석
 - 코드에서 버그 찾는 툴
@@ -184,7 +185,7 @@ jvm option: -javaagent:/Users/keesun/workspace/MasulsaJavaAgent/target/MasulsaAg
 - 프록시
 - 특정 API 호출 접근 제한
 - 스칼라 같은 언어의 컴파일러
-### 그밖에도 자바 소스 코드 건리지 않고 코드 변경이 필요한 여러 경우에 사용할 수 있다.
+### 그밖에도 자바 소스 코드 건드리지 않고 코드 변경이 필요한 여러 경우에 사용할 수 있다.
 - 프로파일러 (newrelic)
 - 최적화
 - 로깅
