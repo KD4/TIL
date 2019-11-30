@@ -32,3 +32,4 @@
 - [이진트리 레벨 순회](./BinaryTreeLevelOrderTraversal.java)
 - [랜덤셋](./RandomizedSet.java)
 - [LRU Cache](./LRU-cache.md)
+- [공장 효율화](./CapacityReducer.md)
