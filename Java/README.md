@@ -13,3 +13,4 @@
 - [인프런 더 자바 - 클래스로더](./class-loader.md)
 - [인프런 더 자바 - 바이트코드 조작](./handling-bytecode.md)
 - [인프런 더 자바 - 리플랙션](./java-reflection.md)
+- [인프런 더 자바 - 다이나믹 프록시](./dynamic-proxy.md)
