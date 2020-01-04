@@ -35,3 +35,4 @@
 - [공장 효율화](./CapacityReducer.md)
 - [Top k 빈도 글자](./TopKFrequentWords.md)
 - [이분 그래프 활용](./possible-bipartition.md)
+- [그래프 DFS 응용](./number-of-islands.md)
