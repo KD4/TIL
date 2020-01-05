@@ -25,7 +25,7 @@
 - [토비의 스프링](./TobySpring/README.md)
 
 # 컨퍼런스 정리
-- [If Kakao](./Ifkakao/README.md)
+- [If Kakao](./IfKakao/README.md)
 - [Deview](./Deview/README.md)
 
 # 프로그래밍 언어
