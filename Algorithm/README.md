@@ -36,3 +36,4 @@
 - [Top k 빈도 글자](./TopKFrequentWords.md)
 - [이분 그래프 활용](./possible-bipartition.md)
 - [그래프 DFS 응용](./number-of-islands.md)
+- [최소 경로 합계](./minimum-path-sum.md)
