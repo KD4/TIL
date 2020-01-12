@@ -33,3 +33,4 @@ Spring 만으로 아주 간단한 Hello World 웹 어플리케이션을 개발�
 - [인프런-스프링 부트 의존성 관리](./dependency-management.md)
 - [인프런-스프링 부트 자동 설정](./auto-configuration.md)
 - [인프런-스프링 부트 내장 웹서버](./embedded-web-server.md)
+- [인프런-독립적으로 실행 가능한 JAR](./spring-boot-maven-plugin.md)
