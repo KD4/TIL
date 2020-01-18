@@ -58,3 +58,4 @@ private String name
 ### 플레이스 홀더
 -> name = keesun
 -> fullName = ${name} baik
+
