@@ -37,3 +37,17 @@ https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/overview
 
 특정 패키지의 로그 레벨 조정은 `logging.level.패지키 = 로그 레벨` 설정을 통해서 할 수 있다.
 
+이런 설정 파일로 하나하나 하지 않고 커스텀 로그 설정 파일을 사용할 수 있다. 
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html 커스텀 로그 설정 파일 사용하기
+
+- Logback: logback-spring.xml
+- Log4J2: log4j2-spring.xml
+- JUL (비추): logging.properties
+
+### Logback extension
+- 프로파일 <springProfile name=”프로파일”>
+- Environment 프로퍼티 <springProperty>
+- 로거를 Log4j2로 변경하기
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-log4j-for-logging
+
