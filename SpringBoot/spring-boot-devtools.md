@@ -15,6 +15,7 @@ pom.xml에 추가를 해줘야 적용됨
 
 위 의존성을 추가하면 `DevToolsPropertyDefaultsPostProcessor`에 의해서 아래 설정이 적용된다. 
 
+
 ```java
 static {
 		Map<String, Object> properties = new HashMap<>();
