@@ -18,7 +18,6 @@ src
 ```
 
 
-
 [Tip]
 - Java 패키지 네이밍은 도메인 이름을 거꾸로 표현하는 것을 추천한다. (예, com.example.project).
 
