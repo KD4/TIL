@@ -50,5 +50,4 @@ static {
 ## 글로벌 설정
 ~/.spring-boot-devtools.properties
 
-## 리모트 애플리케이션
- 
+ Í
