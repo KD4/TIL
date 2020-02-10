@@ -55,3 +55,94 @@ public class WebConfig implements WebMvcConfigurer {
 
 }
 ```
+
+## HttpMessageConverters
+
+https://docs.spring.io/spring/docs/5.0.7.RELEASE/spring-framework-reference/web.html#mvc-config-message-converters
+
+HttpMessageConverter는 Spring framework의 Web MVC interface로 HTTP 요청 본문을 객체로 변경하거나 객체를 HTTP 응답 본문으로 변경할 때 사용한다.
+
+```java
+@RestController
+public class UserController {
+
+    @PostMapping("/users")
+    public @ResponseBody User create(@RequestBody User user) {
+        return null;
+    }
+}
+```
+
+```
+{“username”:”keesun”, “password”:”123”} <-> User
+```
+
+위와 같은 어노테이션이 붙을 때 HttpMessageConverter가 사용된다. 종류는 여러가지가 있는데 사용하는 HttpMessageConverter는 어떤 요청이느냐에 따라서 달라진다. 요청에 Content type이 Json이면 JosnMessageConverter가 사용되어 Json으로 컨버팅된다. 그냥 String이라면 StringMessageConverter가 사용된다. 
+
+추가로 RestController가 붙어 있으면 ResponseBody가 생략되어도 괜찮다.
+
+```java
+@RestController
+public class UserController {
+
+    @PostMapping("/users")
+    public User create(@RequestBody User user) {
+        return null;
+    }
+}
+```
+
+## ViewResolver
+
+스프링 부트가 제공하는 클래스
+들어오는 요청에 accept header에 따라 응답이 달라진다. 브라우저 또는 클라이언트가 어떤 타입에 본문을 원한다를 서버에 알려주는 accept header. accept header에 따라 응답이 달라질 수 있다.
+
+* Accept Header or format query param
+
+#### Accept Header
+
+`Accept` 헤더는 MINME 타입으로 표현되는, 클라이언트가 이해 가능한 컨텐츠 타입이 무엇인지 서버에게 알려줄 때 사용하는 헤더이다.
+
+```
+Accept: <MIME_type>/<MIME_subtype>
+Accept: <MIME_type>/*
+Accept: */*
+
+// example, you can use Mulitple types likes below.
+// Accept: text/html, application/json, application/xml
+```
+
+accept를 xml로 주었을 때 일반적인 경우의 어플리케이션은 HttpMediaTypeNotAcceptableException을 뱉을 것이다. 
+
+HttpMediaTypeNotAcceptableException 예외가 발생하는 경우는 HttpMessageConverter가 없는 경우이다. 
+
+HttpMessageConvertersAutoConfiguration 에서 필요한 HttpMessageConverter가 등록되는지, 빈 조건을 살펴볼 수 있다. 
+
+xml을 받기 위해서 아래 의존성을 추가해야한다.
+
+```xml
+<dependency>
+   <groupId>com.fasterxml.jackson.dataformat</groupId>
+   <artifactId>jackson-dataformat-xml</artifactId>
+   <version>2.9.6</version>
+</dependency>
+```
+
+## 정적 리소스 지원
+
+정적 리소스라는거는 동적으로 생성하지 않은거, 즉 웹 브라우저의 요청에 따라서 이미 만들어진 리소스를 보내주는 경우 
+서버가 요청에 따라서 다른 뷰를 만드는게 아니라 이미 만들어진 리소스를 제공
+
+정적 리소스 맵핑 "/**"
+기본 리소스 위치
+- classpath:/static
+- classpath:/public
+- classpath:/resources
+- classpath:/META-INF/resources
+
+예를 들어 /hello.html => /static/hello.html을 보내준다.
+
+이 기본 정적 리소스 매핑 정보는 아래 스프링 옵션으로 변경 가능하다.
+- spring.mvc.static-path-pattern: 맵핑 설정 변경 가능
+- spring.mvc.static.locations: 리소스 찾을 위치 변경 가능
+
