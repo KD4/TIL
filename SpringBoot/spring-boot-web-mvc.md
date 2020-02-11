@@ -15,7 +15,7 @@ public class UserControllerTest {
     MockMvc mockMvc;
 
     @Test
-    public void hello() {
+    public void hello() {∑
         mockMvc.perform(get("/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("hello"));
@@ -145,4 +145,30 @@ xml을 받기 위해서 아래 의존성을 추가해야한다.
 이 기본 정적 리소스 매핑 정보는 아래 스프링 옵션으로 변경 가능하다.
 - spring.mvc.static-path-pattern: 맵핑 설정 변경 가능
 - spring.mvc.static.locations: 리소스 찾을 위치 변경 가능
+
+#### 추천하는 방법
+
+WebMvcConfigurer의 addResourceHandler를 오버라이딩하면 조금 더 명시적이다. 
+
+```java
+@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+  registry.addResourceHandler("/m/**")
+    .addResourceLocations("classpath:/m/") // 반드시 "/"로 끝나야 함.
+    .setCachePeriod(20); //초단위
+```
+
+
+## ResourceHttpRequestHandler
+정적 리소스 파일을 핸들링하는 클래스
+
+특징 Last-Modified 헤더 관리
+=> 정적 리소스 파일 변경시 Last-Modified 필드가 변경됨 
+
+=> 브라우저는 이 리소스가 언제 바꼈는지 알 수 있다. 
+
+=> 브라우저 요청 헤더에는 If-Modified-Since 가 있다.
+
+=> 서버는 Last-Modifed < If-Modifed-Since 라면 302 리턴을 보내 리소스를 다시 보내지 않는다.
+
 
