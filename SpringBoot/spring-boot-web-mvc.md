@@ -171,4 +171,43 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 => 서버는 Last-Modifed < If-Modifed-Since 라면 302 리턴을 보내 리소스를 다시 보내지 않는다.
 
+# WebJARs
+ 
+Spring Boot 기반 웹웹 UI에서 사용하는 자바스크립트 라이브러리를 메이븐이나 그래들과 같은 Spring Boot 의존성 관리 라이프사이클에서 관리할 수 있도록 도와주는 기능이다. 
+
+기존에 bootstrap, jquery, react와 같은 JS Lib를 사용할 때는 아래와 같은 방법들을 사용했을 것이다. 
+
+1. minify된 JS 파일을 다운받아서 프로젝트에 넣음
+2. CDN 사용
+
+위와 같은 방법은 번거롭다, 안정성이 부족하다 라는 단점이 있는데 아래 디펜던시를 추가하면 Jquery 의존성을 메이븐을 통해 관리할 수 있고 프로젝트 리소스 디렉토리에 자동으로 들어가서 파일 C/P 번거로움도 없어진다.
+
+```xml
+<!-- https://mvnrepository.com/artifact/org.webjars/jquery -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>jquery</artifactId>
+    <version>3.3.1</version>
+</dependency>
+```
+
+```html
+<script src="/webjars/jquery/dist/jquery.min.js"></script>
+<script>
+   $(function() {
+       console.log("ready!");
+   });
+</script>
+```
+
+webjars로 등록된 디펜던시는 위 예제처럼 "/webjars/jquery/{version}/dist/" 경로에서 확인할 수 있다. 
+
+
+
+
+
+
+클라이언트에서 사용하는 자바스크립트 라이브러리 Jquery, React 같은 것도 JAR 파일로 추가할 수 있다. 
+웹JAR에 있는 내용도 서버에서 참조할 수 있다.
+
 
