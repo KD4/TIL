@@ -215,5 +215,50 @@ webjars로 등록된 디펜던시는 위 예제처럼 "/webjars/jquery/{version}
 - 파비콘이 안 바뀔 때?
 https://stackoverflow.com/questions/2208933/how-do-i-force-a-favicon-refresh
 
+# 템플릿엔진
+
+스프링부트를 이용해 동적 컨텐츠를 생성하는 방법 = 템플릿 엔진
+
+### 스프링부트가 자동 설정을 지원하는 템플릿 엔진
+
+- FreeMarker
+- Groovy
+- **Thymeleaf**
+- Mustache
+
+### JSP를 권장하지 않는 이유
+
+- JAR 패키징 할 때는 동작하지 않고, WAR로 패키징 해야 함.
+- Underflow(서블릿엔진)는 JSP를 지원하지 않음
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-jsp-limitations
+
+### Thymeleaf 사용하기
+
+- https://www.thymeleaf.org/
+- https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html
+- 의존성 추가: spring-boot-starter-thymeleaf
+- 템플릿 파일 위치: /src/main/resources/template/
+- 예제: https://github.com/thymeleaf/thymeleafexamples-stsm/blob/3.0-master/src/main/webapp/WEB-INF/templates/seedstartermng.html
+
+자동 설정이 적용되면 resources/templates 아래에서 찾게된다. 
+
+"/hello"를 호출했을 때 /resources/templates/hello 템플릿 반환하기
+
+```java
+@Controller
+public class SampleController {
+
+    @GetMapping("/hello")
+    public String hello(Model model) {
+        model.addAttribute("name", "gwanwoo") // name property에 gwanwoo를 할당
+        return "hello"; // hello라는 템플릿 문서를 View로 하는 동적 문서를 만들도록 요청한다.
+    }
+}
+```
+
+- @Controller: 여기서 controller 애노테이션은 @RestController 과 모양은 물론 역할도 다르다. return하는 값이 String이면 해당하는 뷰를 찾아서 넘겨준다.
+ 
+
+
 
  
