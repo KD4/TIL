@@ -259,6 +259,68 @@ public class SampleController {
 - @Controller: 여기서 controller 애노테이션은 @RestController 과 모양은 물론 역할도 다르다. return하는 값이 String이면 해당하는 뷰를 찾아서 넘겨준다.
  
 
+#### Variable Expression
 
+1. 템플릿 엔진에 xml namespace 추가
+2. 변수 주입
+
+```html
+<!DOCTYPE html>
+<!-- 1. NameSpace 정의 -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 2. name 변수 주입, 없으면 Name으로 출력 -->
+<h1 th:text="${name}">Name</h1> 
+</body>
+```
+
+* 장점: html이라서 기본적으로 웹서버 없이 동작 가능하다. 기본값 또한 세팅이 가능하므로 백단 작업없이 프론트 작업만도 가능하다.
 
  
+# HtmlUnit
+
+HTML 템플릿 뷰 테스트를 보다 전문적으로 하는 방법 : HTML Unit
+
+- http://htmlunit.sourceforge.net/
+- http://htmlunit.sourceforge.net/gettingStarted.html
+
+### 의존성 추가
+
+```xml
+<dependency>
+   <groupId>org.seleniumhq.selenium</groupId>
+   <artifactId>htmlunit-driver</artifactId>
+   <scope>test</scope>
+</dependency>
+<dependency>
+   <groupId>net.sourceforge.htmlunit</groupId>
+   <artifactId>htmlunit</artifactId>
+   <scope>test</scope>
+</dependency>
+```
+
+### 테스트 예제
+
+
+```java
+@RunWith(SpringRunner.class)
+@WebMvcTest(SampleController.class)
+public class SampleControllerTest {
+
+    //WebMvcTest 설정을 사용한 빈
+    @Autowired
+    WebClient webClient
+
+    @Test
+    public void hello() {∑
+        HtmlPage page = webClient.getPage("/hello");
+        HtmlHeading1 h1 = page.getFirstByXPath("//h1");
+        assetThat(h1.getTextContent()).isEqualToIgnoringCase("gwanwoo");
+    }
+
+}
+```
