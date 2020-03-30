@@ -8,6 +8,8 @@
 
 class RandomizedSet {
 
+    // Set 자료구조 조건, 중복 불가를 구현하기 위한 map
+    // getRandom 메소드는 list에 있는 값을 뽑는다. 
     HashMap<Integer, Integer> map;
     ArrayList<Integer> list;
     Random random = new Random();
@@ -34,8 +36,11 @@ class RandomizedSet {
         
         int last = list.get(list.size()-1);
         
+        // 마지막 값이 아니면
         if (idx != list.size()-1) {
+            // idx 값에 마지막에 저장된 val를 설정한다.
             list.set(idx, last);
+            // 마지막 값에 인덱스를 수정한다. 
             map.put(last, idx);
         }
         
@@ -46,6 +51,7 @@ class RandomizedSet {
     
     /** Get a random element from the set. */
     public int getRandom() {
+    
         int idx = random.nextInt(map.size());
         return list.get(idx);
     }
