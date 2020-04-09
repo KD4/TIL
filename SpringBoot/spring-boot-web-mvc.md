@@ -324,3 +324,70 @@ public class SampleControllerTest {
 
 }
 ```
+
+# MVC ExceptionHandler
+
+Spring Boot MVC 웹 서버에서 예외가 발생 했을 때 클라이언트에 어떤 페이지, 혹은 정보를 넘겨주는지 결정하는 핸들러
+
+웹 브라우저에서 가끔 보이는 WhiteLabel 페이지에 이 로직에 의해서 처리된 결과이다. 
+머신 클라이언트(Curl)에서 요청한 경우에는 json으로 예외 정보가 반환된다.
+
+스프링 부트가 제공하는 기본 예외 처리 로직은 BasicErrorController에 들어있다.
+
+## BasicErrorController
+
+
+BasicErrorController에서 웹 브라우저에서 html 문서를 요청했을 때 에러가나면 처리하는 로직이 아래와 같이 정의돼있다.
+
+- HTML과 JSON 응답 지원
+
+```java
+
+// accept header
+@RequestMapping(producers = "text/html")
+public ModelAndView errorHtml(HttpServletRequest request, HttpServletResponse response) {
+    HttpStatus status= getStatus(request);
+    Map<String, Object> model = Collections.unmodifiableMap(...);
+    ...
+
+    return (modelAndView != null ? modelAndView : new ModelAndView(...));
+}
+
+```
+
+
+## 스프링 웹 MVC에서 예외 핸들링 하는 방법
+
+### Controller 안에서 발생하는 예외를 처리하는 방법
+
+```java
+
+@Controller
+public class SampleController {
+    
+    @GetMapping("/hello")
+    public String hello() {
+        throw new SampleException();
+    }
+
+    @ExceptionHandler(SampleException.class)
+    public @ResponseBody AppError sampleError(SampleException e) {
+        AppError appError = new AppError();
+        appError.setMessage("error.app.key");
+        appError.setReason("IDK");
+        return appError;
+    }
+}
+```
+
+위 코드는 컨트롤러 안에서만 동작하고 전역으로 하고 싶으면 @ControllerAdvice 어노테이션을 붙인 컨트롤러를 만들어서 전역으로 동작하게끔 할 수 있다.
+
+## 커스텀 에러 페이지
+
+에러가 발생했을 때 응답에 상태값에 따라 다른 웹페이지를 보여주고싶다. 이럴때 정적 리소스에 관련 페이지를 넣어서 처리할 수 있다. 
+
+resource/static 아래 error라는 디렉토리를 만들고 4xx.html, 404.html, 5xx.html 등등 을 만들면된다. 
+
+#### 참고
+
+ https://supawer0728.github.io/2019/04/04/spring-error-handling/
