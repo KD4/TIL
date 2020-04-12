@@ -391,3 +391,28 @@ resource/static 아래 error라는 디렉토리를 만들고 4xx.html, 404.html,
 #### 참고
 
  https://supawer0728.github.io/2019/04/04/spring-error-handling/
+
+
+# Spring HATEOAS
+
+REST API의 정점
+
+Hypermedia As The Engine Of Application State의 약자
+
+- 서버: 현재 리소스와 연관된 링크 정보를 클라이언트에게 제공한다.
+
+- 클라이언트: 연관된 링크 정보를 바탕으로 리소스에 접근한다.
+
+
+### 적용 방법
+우선 spring-boot-starter-hateoas 의존성 추가
+
+- https://spring.io/understanding/HATEOAS
+- https://spring.io/guides/gs/rest-hateoas/
+- https://docs.spring.io/spring-hateoas/docs/current/reference/html/
+
+#### ObjectMapper 제공
+- spring.jackson.*
+- Jackson2ObjectMapperBuilder
+#### LinkDiscovers 제공
+클라이언트 쪽에서 링크 정보를 Rel 이름으로 찾을때 사용할 수 있는 XPath 확장 클래스
