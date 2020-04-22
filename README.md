@@ -67,5 +67,5 @@
 - [Tomcat](./Tomcat/README.md)
 
 # 개발 도구
-- [Github](./Github/README.md)
+- [Git](./Git/README.md)
 - [Linux](./Linux/README.md)
