@@ -416,3 +416,44 @@ Hypermedia As The Engine Of Application State의 약자
 - Jackson2ObjectMapperBuilder
 #### LinkDiscovers 제공
 클라이언트 쪽에서 링크 정보를 Rel 이름으로 찾을때 사용할 수 있는 XPath 확장 클래스
+
+# Spring CORS
+
+### SOP와 CORS
+SOP는 Single-Origin Policy의 약자로 같은 Origin이 아니면 리소스 요청을 허용하지 않는다는 브라우저 정책이다. 
+
+CORS는 이 SOP를 우회하는 기술로 Cross-Origin Resource Sharing의 약자이다. 
+
+CORS의 기술은 여러가지가 있고 스프링은 서버단에서 헤더를 추가해 특정 리소스에 특정 오리진이 접근할 수 있도록 하는 스펙을 구현하고 있다. 
+
+그럼 Origin이 무엇일까?
+
+#### Origin
+Origin은 리소스 요청에 대한 주소 정보이다. HTTP 프로토콜 요청은 보통 3가지 요소로 구성된다. 
+
+- URI 스키마: HTTP, HTTPS 주소 앞에 붙은 스키마이다.
+- 호스트네임: 도메인 주소이다. daum.net 혹은 naver.com
+- 포트: 도메인 주소 뒤에 붙는 포트이다. 8080, 9090 등
+
+세 가지 구성요소 중 하나라도 다르면 다른 Origin으로 인식된다.
+
+
+### 스프링 MVC @CrossOrigin
+스프링 부트는 @CrossOrigin을 통해서 특정 매핑에 CORS 정책을 Enable 시킬 수 있다.
+
+```Java
+
+@CrossOrigin(origins="http://localhost:18080")
+@GetMapping("/hello)
+public String hello() {
+    return 'Hello';
+}
+
+```
+
+위 예제는 http 스킴으로 localhost 호스트 네임의 18080포트에서 들어오는 hello 요청은 허용하며 access-origin-allow 헤더를 심어주겠다 라는 뜻이다.
+
+이 어노테이션을 @Controller나 @RequestMapping에 추가하면 간단히 허용할 수 있고 글로벌로 허용하려면
+
+WebMvcConfigurer를 구현한 Configuration 파일을 만들어서 할 수 있다.
+
