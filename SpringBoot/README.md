@@ -43,3 +43,4 @@ Spring 만으로 아주 간단한 Hello World 웹 어플리케이션을 개발�
 - [인프런-스프링부트 테스트 유틸](./spring-boot-test-utils.md)
 - [인프런-스프링부트 devtools](./spring-boot-devtools.md)
 - [인프런-스프링부트 웹 MVC](./spring-boot-web-mvc.md)
+- [인프런-스프링부트 인메모리 DB](./spring-boot-inmemory-db.md)
