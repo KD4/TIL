@@ -490,6 +490,173 @@ val subscribingUser = User.newSubscribingUser("bob@gmail.com")
 
 - 외부에서 동반객체를 가리키기 위해서 Companion이라는 키워드를 사용할 수 있고, 이를 통해 확장 함수 정의가 가능하다.
 
+## 람다식의 문법
+
+```kotlin
+{ x: Int, y: Int -> x + y }
+```
+
+- 파라미터와 바디로 구성됨
+- 항상 중괄호로 감싸져있음
+
+람다식 문법에 따라 리스트의 maxBy 함수를 호출하면 아래와 같다
+
+```kotlin
+tempList.maxBy({ p: Person -> p.age })
+
+// 가장 마지막 인자가 람다식이면 ()를 밖으로 뺄 수 있고
+tempList.maxBy() { p: Person -> p.age }
+
+// 괄호 인자가 람다식 하나면 아예 뺄 수 있다.
+tempList.maxBy { p: Person -> p.age }
+```
+
+#### 더 간략화
+
+함수의 인자로 쓰일 때 일반적으로 람다 파라미터의 타입은 유츄할 수 있다.
+
+```kotlin
+tempList.maxBy { p -> p.age }
+
+// 이때 파라미터가 하나 뿐이라면 it 키워드 사용 가능
+tempList.maxBy { it.age }
+```
+
+- 람다가 여러줄로 기술된 경우 가장 마지막 expression이 결과값이 된다.
+
+```kotlin
+val sum = { x: Int, y: Int ->
+        println("hi")
+        x+y 
+    }
+```
+
+### lambda의 스코프
+
+- 람다는 클로저를 생성한다.
+- 따라서 상위 스코프를 가져갈 수 있다.
+
+## Member references
+
+#### "::"
+- "::" 표현을 이용해서 멤버 메소드를 호출하거나 멤버 프로퍼티를 참조할 수 있다.
+
+```kotlin
+var getAge = Person::age
+
+fun salute() = println("Salute!!")
+
+run(::salute)
+
+val createPerson = ::Person
+val p = createPerson("Alice", 29)
+println(p)
+```
+
+## Bound references
+
+- Member reference 는 클래스 인스턴스를 인자로 주어야할 때가 있다.
+- Bound reference를 생성하면 클래스 인스턴스도 같이 참조되기 때문에 인자가 필요없다.
+
+```kotlin
+val p = Person("Dmitry", 34)
+val personAgeFunction = Person::age
+println(personAgeFunction(p))
+
+val dmitrysAgeFunction = p::age
+println(dmitrysAgeFuncion())
+```
+
+## Functional interface
+
+= SAM(Single Abstract Method) interface라고 한다.
+
+- 코틀린에서는 자바 함수가 functional interface를 인자로 받는 경우 lambda 식으로 인자를 넘겨줄 수 있다.
+
+## Lambdas with receivers
+
+- 범위 지정 함수이다. 
+
+### 수신 객체 지정 람다 with
+
+with는 아래와 같이 정의된다.
+
+```kotlin
+inline fun <T, R> with(receiver: T, block: T.() -> R): R {
+    return receiver.block()
+}
+```
+
+- 위 정의를 보면 알 수 있지만 receiver에 확장함수를 넣어주는 것과 같은 역할을 한다.
+* 확장함수 아시죠?
+
+- with 함수를 사용하면 람다구문 내의 this를 바꿀 수 있다. 즉 수신객체를 지정할 수 있다.
+
+```kotlin
+fun alphabet(): String {
+    val stringBuilder = StringBuilder()
+
+    return with(stringBuilder) {
+        for (letter in 'A'..'Z') {
+            this.append(letter)
+        }
+
+        append("\nNow I know the alphabet")
+        this.toString()
+    }
+}
+
+```
+
+### 람다 apply
+
+- apply 확장 함수는 with와 비슷하지만 자신에게 전달된 객체를 다시 반환한다.
+```kotlin
+fun alphabet() = StringBuilder().apply {
+    for (letter in 'A'..'Z') {
+        append(letter)
+    }
+
+    append("\nNoew I Know the alphabet!!")
+}.toString()
+```
+
+
+#### apply 사용 규칙
+
+코틀린 공식 문서에 모범 사례에 의하면 apply는 수신 객체 람다 내부에서 수신 객체의 함수를 사용하지 않고 수신 객체 자신을 다시 반환하려는 경우에 apply를 사용한다. 그러면 위 예제는 틀렸나?
+
+```kotlin
+val peter = Person().apply {
+    // apply 의 블록에서는 오직 프로퍼티만 사용한다!
+    name = "Peter"
+    age = 18
+}
+```
+
+#### also 사용 규칙
+수신 객체 람다가 전달된 수신 객체를 전혀 사용하지 않거나 수신 객체의 속성을 변경하지 않고 사용하는 경우 also를 사용한다. also는 apply와 마찬가지로 수신객체를 반환하므로 블록 함수가 다른 값을 반환해야 하는 경우에는 also를 사용할 수 없다.
+
+해당 객체의 유효성 검사를 할 때 유용하다.
+
+
+```kotlin
+class Book(author: Person) {
+    val author = author.also {
+        requireNotNull(it.age)
+        print(it.name)
+    }
+}
+```
+
+#### let 사용 규칙
+
+- 지정된 값이 null이 아닌 경우에 코드를 실행해야 하는 경우
+- nullable 객체를 다른 nullable 객체로 변환하는 경우
+- 단일 지역 변수의 범위를 제한하는 경우
+
+### with 사용 규칙
+- Non-nullable 수신 객체이고 결과가 필요하지 않은 경우에는 with를 사용한다.
 
 
 
