@@ -659,4 +659,160 @@ class Book(author: Person) {
 - Non-nullable 수신 객체이고 결과가 필요하지 않은 경우에는 with를 사용한다.
 
 
+## Nullable
 
+#### Nullable in Java
+
+```java
+int strLen(String s) {
+    return s.length();
+}
+```
+- 자바에서 선언된 위 함수의 인자인 s에는 null이 들어갈 수 있다.
+- 따라서 위 코드는 null safe하지 않다.
+
+- 코틀린에서는 null이 가능한 타입과 그렇지 않은 타입이 구분된다.
+- 아래와 같이 String이라고 선언된 regular type에는 String instance가 할당되어야 한다. null은 할당할 수 없다.
+
+```kotlin
+fun strLen(s: String) = s.length
+>> strLen(null)
+ERROR: Null can not be a value of a non-null type String
+```
+
+- null을 할당할 수 있는 타입에는 non-null 타입 이읆 뒤에 '?'가 붙는다.
+
+```kotlin
+fun strLenSafe(s: String?): Int = 
+    if (s != null) s.length else 0
+```
+
+### Safe call operator: "?."
+
+foo?.bar() 은 foo != null ? for.bar() : null 과 같은 뜻
+
+### Elvis operator: "?:"
+
+foo ?: bar 는 Optional.nullable(foo).else(bar)와 같은 뜻
+
+이를 활용해 예외를 던질 수 있다.
+
+```kotlin
+val address = person.company?.address ?: throw IllegalArgmentException("No address")
+```
+
+### Safe casts: "as?"
+
+foo as? Type 은 foo 가 Type일 때 foo as Type 연산을 실행하고 아니면 null을 반환하는 안전 캐스팅 연산자
+
+```kotlin
+val otherPerson = o as? Person ?: return false
+
+return otherPerson.firstName == firstName && otherPerson.lastName == lastName
+```
+
+### Not-null assertions: "!!"
+
+foo!! 는 for != null 면 foo를 반환하고 foo가 null이면 NPE 떨구는 연산자
+
+### let과 ?. 활용
+
+- let 구문은 수신객체를 인자로 받는 람다식을 실행해준다.
+- safe-call operator ?. 와 함께 사용하면 null check 방식을 단순화 시켜준다.
+
+```kotlin
+if (email != null) sendEmail(email)
+
+email?.let { email -> sendEmail(email) }
+
+email?.let { sendEmail(it) }
+```
+
+## lateinit
+
+코틀린에서는 class 변수를 명시적으로 초기화를 하거나 var subject: String? = null이라고 명시해야한다.
+
+```java
+class Test {
+ var subject: String
+ init {
+      subject = ""
+ }
+}
+//혹은
+class Test {
+ var subject: String = ""
+ // 또는
+ var subject = "" // 묵시적으로 String으로 유추 가능
+}
+```
+
+lateinit는 위와 같이 선언할 때 초기화하는 것이 아니라 사용하는 시점에 초기화가 된다는 명시입니다.
+
+```java
+class Test {
+lateinit var subject: String
+}
+```
+
+lateinit 사용 시 주의해야할 부분은 아래와 같습니다.
+- var(mutable)만 사용가능
+- null을 사용해서 초기화 불필요
+- 늦은 초기화이므로 초기화 전에 사용하면 오류 발생
+- 변수에 대한 setter/getter를 사용할 수 없음
+
+
+lateinit은 아래와 같이 사용될 수 있습니다.
+
+lateinit을 사용하려면 아래와 같이 초기화하고, 이를 아래와 같이 사용할 수 있습니다.
+
+```java
+fun main() {
+ val test = Test()
+ test.subject = "제목 초기화"
+ println("subject ${test.subject}")
+}
+
+class Test {
+ lateinit var subject: String
+}
+```
+
+그래서 위와 같이 초기화 가능합니다.
+
+null / ""으로 initialized 해줄 필요가 없습니다.
+
+## Nullable Type을 위한 확장 함수 활용
+
+```kotlin
+fun String?.isNullOrBlank() : Boolean = 
+    this == null || this.isBlank()
+
+fun verifyUserInput(input: String?) {
+    if (input.isNullOrBlank()) {
+        println("Please fill in the required fields")
+    }
+}
+```
+
+## 상속
+
+```java
+interface StringProcessor {
+    void process(String value);
+}
+```
+
+위와 같이 정의된 인터페이스를 코틀린에서 상속할 때 아래 두가지 방식 모두 가능하다.
+
+```kotlin
+class StringPrinter : StringProcessor {
+    override fun process(value: String) { println(value) }
+}
+
+class StringPrinter : StringProcessor {
+    override fun process(value: String?) { 
+        value?.let { println(it) }
+    }
+}
+```
