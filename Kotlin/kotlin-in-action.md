@@ -1,7 +1,7 @@
 Kotlin in action 
 ===============================
 
-코틀린 인 액션 요약
+코틀린 인 액션 1부 1~6장 요약
 
 ### 변수 선언
 
@@ -239,6 +239,7 @@ infix fun Any.to(other: Any) = Pair(this, other)
 - 위 함수의 정의처럼 infix modifier를 함수에 붙여주면 이 함수를 infix call 매커니즘으로 호출 가능
 
 #### String
+
 - 기본적으로 자바와 코틀린의 String 클래스는 같아서 특별히 변환이 필요 없다.
 - 다양한 확장 함수가 추가됐다
 
@@ -815,4 +816,108 @@ class StringPrinter : StringProcessor {
         value?.let { println(it) }
     }
 }
+```
+
+
+## 코틀린의 타입
+
+코틀린 타입은 자바와 달리 래퍼런스 클래스와 그 기본 타입들이 다르지 않다.
+
+- 정수형 타입 : Byte, Short, Int, Long
+- 실수형 타입 : Float, Double
+- 문자형 타입 : Char
+- 논리형 타입 : Boolean
+
+대략 자바의 래퍼클래스처럼 사용된다?
+
+#### 타입 변환
+
+- 코틀린은 숫자를 다른 타입의 숫자로 자동으로 바꾸어 주지 않기 때문에 변환 메소드를 사용해야한다.
+
+```kotlin
+
+val i = 1
+val l: Long = i // Error: type mismatch
+
+val l: Long = i.toLong()
+```
+
+- 단순 숫자 리터럴을 사용할 때는 변환 함수를 사용하지 않아도 자동으로 변환해준다.
+
+### 리터럴 기본 타입
+
+- Long은 뒤에 L 붙인다.
+- Double은 .을 붙인다.
+- Float는 f나 F를 뒤에 붙인다.
+- Hexadecimal 은 0x나 0X를 앞에 붙인다. 
+- Binary는 0b나 0B를 앞에 붙인다.
+
+## Any, Any? 부모 타입
+
+- 자바에서의 Object 타입처럼 코틀린에서는 Any가 모든 객체의 조상 타입이다.
+- 자바와는 달리 primitive type들도 Any를 조상으로 가진다.
+- nullable type의 경우는 Any?를 조상으로 가진다.
+- 코틀린 코드가 Any를 사용하면 자바 바이트코드로는 Object로 변환된다.
+
+## Unit Type = void
+- 코틀린 Unit type은 자바의 void와 같은 역할을 한다.
+- 이는 생략 가능하다.
+
+```kotlin
+fun f(): Unit {...}
+fun f() {...}
+```
+
+- void와 달리 Unit은 실제로 리턴되는 타입으로, 생략해도 결국엔 이 Unit 타입이 리턴된다는 뜻이다. 
+- 제네릭스에서 Unit을 명시하는 경우가 있다.
+
+## Nothing Type
+
+- 의미: 아무것도 반환하지 않는 함수
+
+```kotlin
+fun fail(message: String): Nothing {
+    throw IllegalStateException(message)
+}
+```
+
+## Arrays of Objects and primitive types
+
+```java
+int[] intArray = new int [] { 1, 2, 3, 4 }
+```
+
+```kotlin
+val intArray: Array<Int> = arrayOf(1,2,3,4)
+```
+- 코틀린의 배열은 타입파라미터를 받는 클래스
+- arrayOf, arrayOfNulls, 등의 생성자로 array를 만들 수 있다.
+
+
+## Creating Array
+
+```kotlin
+val letters = Array<String>(26) {
+    i -> ('a'+i).toString()
+}
+```
+
+- IntArray, ByteArray, CharArray 등의 원시 타입 배열을 이용하면 box 타입이 아닌 int[], byte[], char[] 등으로 컴파일된다. 
+
+## Storing Properties
+
+표준 라이브러리의 Map과 MutableMap에 대해서 getValue와 setValue확장함수가 구현되어 있어 map으로 property delegate할 수 있다.
+
+```kotlin
+class User(val map: Map<String, Any?>) {
+    val name: String by map
+    val age: Int by map
+}
+
+val user = User(mapOf(
+    "name" to "John Doe",
+    "age" to 25
+))
+println(user.name) // Prints "John Doe"
+println(user.age) // Prints 25
 ```
