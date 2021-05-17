@@ -1,6 +1,6 @@
 # Spring Batch with mybatis
 
-Spring Batch로 배치잡을 설계할 떄 일반적으로 사용하는 JPA와 같은 하이버네티스 프레임워크는 ID 채번 문제로 대용량 Insert(bulk)를 수행하지 못한다.
+Spring Batch로 배치잡을 설계할 떄 일반적으로 사용하는 JPA와 같은 하이버네이트 프레임워크는 ID 채번 문제로 대용량 Insert(bulk)를 수행하지 못한다.
 
 이번 프로젝트에서는 MyBatis를 사용하고 있어서 bulk insert를 위한 다양한 내용들을 고려할 수 있었다. 
 
