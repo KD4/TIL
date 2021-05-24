@@ -16,3 +16,4 @@
 - [SSL offloading](./ssl-offloading.md)
 - [UA로 모바일 체크](./detect_mobile_device.md)
 - [일반적인 HTTP 인증 프레임워크](./http_authentication_framework.md)
+- [HTTP GET 요청과 body](./http_get_with_body.md)
