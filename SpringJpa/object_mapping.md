@@ -3,7 +3,7 @@
 
 객체 매핑을 위해서 스프링 어노테이션을 사용한다.
 
-### @Entity
+## @Entity
 객체를 테이블에 매핑하기 위해서 Entity 어노테이션을 사용한다. 이 어노테이션이 붙어있는 클래스를 테이블과 매핑한다고 JPA에게 알려준다. 
 
 name 속성을 이용하여 JPA에서 사용할 엔티티 이름을 지정한다.
@@ -15,15 +15,43 @@ name 속성을 이용하여 JPA에서 사용할 엔티티 이름을 지정한다
 - 저장할 필드에 final을 사용하면 안된다.
 
 
-#### @Table
+## @Table
 엔티티 클래스에 매핑할 테이블 정보를 알려준다.
 name 속성을 이용하여 테이블명을 지정한다.
 
-#### @Id
+### 속성
+- name: 매핑할 테이블 이름
+- catalog: 카탈로그 기능이 있는 DB에서 매핑
+- schema: schema 기능이 있는 DB에서 매핑
+
+## @Id
 엔티티 클래스의 필드를 테이블의 기본키에 매핑한다. id가 사용된 필드를 식별자 필드라고 한다.
 
-#### @Column 
+## @Column 
 필드를 칼럼에 매핑한다.
+
+## @Enumerated
+Java의 enum 타입을 매핑한다.
+
+value 속성을 이용하여 DB에 저장할 값을 지정한다.
+- EnumType.ORDINAL: enum의 순서를 DB에 저장(default)
+- EnumType.STRING: enum의 이름을 저장
+
+## @Temporal
+날짜 타입을 매핑한다.
+
+value 속성을 이용하여 DB에 값을 저장해야한다. value 속성이 필수이다.
+- TemporalType.DATE: 날짜, DB의 date 타입과 매핑
+- TemporalType.TIME: 날짜, DB의 time과 매핑
+- TemporalType.TIMESTAMP: 날짜와 시간, DB의 timestamp 타입과 매핑
+
+## @Lob
+- BLOB, CLOB 타입을 매핑
+
+## @Transient
+- 특정 필드를 데이터베이스에 매핑하지 않는다.
+
+
 
 ```java
 
