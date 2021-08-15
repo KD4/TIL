@@ -44,6 +44,7 @@
 - [Nuxt](./Nuxt/README.md)
 - [Spring](./Spring/README.md)
 - [SpringBoot](./SpringBoot/README.md)
+- [Spring JPA](./springJpa/README.md)
 - [WebSocket](./WebSocket/README.md)
 - [Batch](./Batch/README.md)
 
