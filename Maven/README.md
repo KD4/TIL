@@ -24,3 +24,5 @@ install	|install:install
 deploy	|deploy:deploy
 
 
+
+- [BOM](./bom.md)
