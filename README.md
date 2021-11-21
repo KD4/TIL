@@ -12,7 +12,6 @@
 - [DDD](./DDD/README.md)
 - [DesignPattern](./DesignPattern/README.md)
 - [Encoding](./Encoding/README.md)
-- [Etc](./Etc/README.md)
 - [IMDG](./IMDG/README.md)
 - [MSA](./MSA/README.md)
 - [Programming Language](./ProgrammingLanguage/README.md)
@@ -50,7 +49,6 @@
 
 # 프론트엔드
 - [Backpack](./Backpack/README.md)
-- [Nuxt](./Nuxt/README.md)
 - [React](./React/README.md)
 - [Redux](./Redux/README.md)
 - [Vue](./Vue/README.md)
@@ -67,7 +65,8 @@
 - [MySQL](./MySQL/README.md)
 - [Redis](./Redis/README.md)
 - [Tomcat](./Tomcat/README.md)
-
-# 개발 도구
-- [Git](./Git/README.md)
 - [Linux](./Linux/README.md)
+- [Git](./Git/README.md)
+
+## ETC
+- [Etc](./Etc/README.md)
