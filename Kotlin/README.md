@@ -4,6 +4,7 @@
 - [코틀린 람다로 프로그래밍](./kotlin-in-action-5.md)
 - [코틀린 타입 시스템](./kotlin-in-action-6.md)
 - [코틀린 관례](./kotlin-in-action-7.md)
+- [코틀린 고차함수](./kotlin-in-action-8.md)
 - [lateinit](./lateinit.md)
 - [class 기본](./class-base.md)
 - [associateBy](./associate-by.md)
