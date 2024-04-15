@@ -16,3 +16,4 @@ In-Memory 데이터베이스로 모든 데이터를 메모리에 저장하고 �
 - Streams
 
 - [redis DB](./redis-database.md)
+- [Redis For Developers-1](./redis-for-developers-1.md)
